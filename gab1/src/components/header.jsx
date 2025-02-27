@@ -1,9 +1,16 @@
-import React from 'react'
+import React from "react";
+import logoSpotify from "../assets/logo/spotify-logo.png";
 
-const header = () => {
+const Header = () => {
   return (
-    <div>header</div>
-  )
-}
+    <div className="header">
+      <img src={logoSpotify} alt="Logo do Spotify" />
 
-export default header
+      <a className="header__link" href="/">
+        <h1>Spotify</h1>
+      </a>
+    </div>
+  );
+};
+
+export default Header;
