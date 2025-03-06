@@ -25,7 +25,7 @@ export default info;
 //<header> </header>
 // é o mesmmo que <Header/> -> usado quando não queremos colocar contéudo no meio
 
-/* Variavel do JS aplicado no JSX (No html precisa estar em chaves) */
+// Variavel do JS aplicado no JSX (No html precisa estar em chaves), exemplo: {title} populares
 
 //O css funciona com chave valor
 
@@ -55,4 +55,12 @@ export default info;
 // Nomes compostos são separados por -
 
 // Tag vazia em React se chama Fragment ou Fragmento
-//Permite passar sobre a restrição do react de retornar somente um componente.
+//Components recebem props
+//Permite passar sobre a restrição do react de retornar somente um componente, como no caso:
+//Se não tivesse entre tags vazias, o código retornaria um erro por ter mais de um componente.
+<>
+  <SingleItem />
+  <SingleItem />
+</>;
+//var.map(currentValue, index) => <componente/>)
+//função map: uma função que pode ser usada como loop!
