@@ -55,12 +55,37 @@ export default info;
 // Nomes compostos são separados por -
 
 // Tag vazia em React se chama Fragment ou Fragmento
-//Components recebem props
 //Permite passar sobre a restrição do react de retornar somente um componente, como no caso:
 //Se não tivesse entre tags vazias, o código retornaria um erro por ter mais de um componente.
 <>
   <SingleItem />
   <SingleItem />
 </>;
+
+//Components recebem props
+
+//Desestruturação
+const { pathname } = useLocation();
+const pathnamee = useLocation().pathname;
+
+//Operador ternário
+// {artist ?? "Artista"} é o mesmo que {artist !== null && artist !== undefined ? artist : "Artista"}
+
+// isHome ? (FinalItems = items) : (finalItems = Infinity); é o mesmo que finalItems = isHome? items : Infinity
+
 //var.map(currentValue, index) => <componente/>)
 //função map: uma função que pode ser usada como loop!
+
+// Array(items)
+//           .fill()
+//           .map((currentValue, index) => (
+//             <SingleItem key={`${title}-${index}`} />
+//           ))
+
+// Spread operator
+// ...
+
+// Quando componentes se re-renderizão?
+// Uma das ocasiões é quando uma variável de estado usada por esse componente é atualizada
+
+// Hook - useState
