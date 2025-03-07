@@ -3,10 +3,7 @@ import SingleItem from "./SingleItem";
 import { Link, useLocation } from "react-router-dom";
 
 const ItemList = ({ title, items, itemsArray, path, idPath }) => {
-  // console.log(items);
-  // console.log(useLocation());
   const { pathname } = useLocation();
-  // console.log(pathname);
   const isHome = pathname === "/";
   const finalItems = isHome ? items : Infinity;
 

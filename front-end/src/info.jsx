@@ -74,7 +74,16 @@ const pathnamee = useLocation().pathname;
 // isHome ? (FinalItems = items) : (finalItems = Infinity); é o mesmo que finalItems = isHome? items : Infinity
 
 //var.map(currentValue, index) => <componente/>)
-//função map: uma função que pode ser usada como loop!
+//função map: uma função que pode ser usada como loop para gerar um novo array a partir de outro, filtrando o original!
+
+// Spread operator
+// ... -> Faz uma cópia do array original, mas com um endereço diferente, ou seja as mudanças feitas num não será aplicada ao outro.
+const newArtistArray = artistArray.map((currentArtistObj) => {
+  const newArtistObj = { ...currentArtistObj };
+  delete newArtistObj.id;
+
+  return newArtistObj;
+});
 
 // Array(items)
 //           .fill()
@@ -82,10 +91,29 @@ const pathnamee = useLocation().pathname;
 //             <SingleItem key={`${title}-${index}`} />
 //           ))
 
-// Spread operator
-// ...
-
 // Quando componentes se re-renderizão?
 // Uma das ocasiões é quando uma variável de estado usada por esse componente é atualizada
+//"Hookado" por assim dizer, é quando um componente é re-redenrizado
+// //Exemplo: Hook - useState, useEffect - useeff (snipet)
 
-// Hook - useState
+useEffect(() => {
+  const intervalId = setInterval(() => {
+    if (isPlaying) setCurrentTime(formatTime(audioPlayer.current.currentTime));
+
+    progressBar.current.style.setProperty(
+      "--_progress",
+      (audioPlayer.current.currentTime / durationInSeconds) * 100 + "%"
+    );
+  }, 1000); //Isso é redenrizado assim que o componente é acessado
+
+  return () => clearInterval(intervalId); //Ação de limpar e executar novamente.  é feita após qual interação?
+}, [isPlaying]); //Essa interação, que nesse caso é uma função
+
+//Manipulação de tempo com Strings + Função Number
+const timeInSeconds = (timeString) => {
+  const splitArray = timeString.split(":");
+  const minutes = Number(splitArray[0]);
+  const seconds = Number(splitArray[1]);
+
+  return seconds + minutes * 60;
+};

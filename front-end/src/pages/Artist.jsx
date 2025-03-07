@@ -8,7 +8,6 @@ import { songsArray } from "../assets/database/songs";
 
 const Artist = () => {
   const { id } = useParams();
-  // console.log(useParams());
 
   const { name, banner } = artistArray.filter(
     (currentArtistObj) => currentArtistObj._id === id
@@ -22,12 +21,6 @@ const Artist = () => {
     Math.random() * (songsArrayFromArtist.length - 1)
   );
   const randomIdFromArtist = songsArrayFromArtist[randomIndex]._id;
-
-  // console.log(randomIdFromArtist);
-  // console.log(Math.floor(Math.random() * (songsArrayFromArtist.length - 1)));
-  // console.log("Tamanho do Array:" + songsArrayFromArtist.length);
-
-  // console.log(songsArrayFromArtist);
 
   return (
     <div className="artist">
