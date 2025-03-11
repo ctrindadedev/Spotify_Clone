@@ -2,10 +2,9 @@
 // POST, GET, PUT, DELETE
 // CRUD em rotas
 
-import express from "express";
+import express from "../node_modules/express/index.js";
 import { db } from "./connect.js";
-
-// Middleware
+import "dotenv/config";
 import cors from "cors";
 
 const app = express();
