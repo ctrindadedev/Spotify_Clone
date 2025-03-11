@@ -1,5 +1,4 @@
 node_modules
-connect.js
 eslint.config
 .vite
 # Logs
@@ -29,3 +28,4 @@ dist-ssr
 node_modules/
 vite.config.js
 eslint.config.js
+.env
