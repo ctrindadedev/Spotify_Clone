@@ -1,6 +1,4 @@
 node_modules
-package-lock.json   
-package.json
 connect.js
 eslint.config
 .vite
