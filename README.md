@@ -25,8 +25,8 @@ Sistema de rotas com React Router DOM
 
 ## Tecnologias Utilizadas
 <ul>
-Frontend:
 
+Frontend:
 
 React.js (Componentização e Hooks)
 
@@ -48,7 +48,9 @@ MongoDB (Banco de dados NoSQL)
 
 ## Principais Conhecimentos Aplicados
 <ul>
+
 Componentização no React: Divisão da interface em componentes reutilizáveis.
+
 
 Hooks no React: Uso de useState, useEffect, useLocation e useParams para gestão de estados.
 
@@ -60,6 +62,8 @@ Desestruturação no React: Uso de sintaxe do JavaScript ES6+ para simplificar a
 
 Sistema de Rotas com React Router DOM: Navegação entre páginas sem recarregamento.
 </ul>
+
+
 
 
 
