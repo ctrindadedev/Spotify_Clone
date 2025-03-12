@@ -1,9 +1,14 @@
 import React from "react";
 import ItemList from "./ItemList";
-import { artistArray } from "../assets/database/artists";
-import { songsArray } from "../assets/database/songs";
+import { useFetchData } from "../../api/api";
 
 const Main = ({ type }) => {
+  const { artistArray, songsArray } = useFetchData();
+
+  if (!artistArray.length || !songsArray.length) {
+    return <div>Carregando...</div>;
+  }
+
   return (
     <div className="main">
       {/* Item List de Artistas */}

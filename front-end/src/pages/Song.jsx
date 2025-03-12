@@ -1,31 +1,37 @@
 import React from "react";
 import Player from "../components/Player";
 import { Link, useParams } from "react-router-dom";
-import { songsArray } from "../assets/database/songs";
-import { artistArray } from "../assets/database/artists";
+import { useFetchData } from "../../api/api";
 
 const Song = () => {
   const { id } = useParams();
+  const { artistArray, songsArray } = useFetchData(); //obter dados com o hook
 
-  const { image, name, duration, artist, audio } = songsArray.filter(
-    (currentSongObj) => currentSongObj._id === id
-  )[0];
+  // verificaçaõ para garantir que os dados estejam carregados
+  if (!artistArray.length || !songsArray.length) {
+    return <div>Carregando...</div>; //  exibir algo  enquanto carrega
+  }
 
-  const artistObj = artistArray.filter(
-    (currentArtistObj) => currentArtistObj.name === artist
-  )[0];
+  const song = songsArray.find((song) => song._id === id);
+  if (!song) {
+    return <div>Música não encontrada.</div>; // caso não encontre a música com o id
+  }
 
+  const { image, name, duration, artist, audio } = song;
+
+  const artistObj = artistArray.find((artistObj) => artistObj.name === artist);
+  if (!artistObj) {
+    return <div>Artista não encontrado.</div>; // caso não encontre o artista
+  }
+
+  // filtrar  músicas do mesmo artista
   const songsArrayFromArtist = songsArray.filter(
-    (currentSongObj) => currentSongObj.artist === artist
+    (song) => song.artist === artist
   );
 
-  const randomIndex = Math.floor(
-    Math.random() * (songsArrayFromArtist.length - 1)
-  );
-
-  const randomIndex2 = Math.floor(
-    Math.random() * (songsArrayFromArtist.length - 1)
-  );
+  // select aleatoriamente músicas para exibir
+  const randomIndex = Math.floor(Math.random() * songsArrayFromArtist.length);
+  const randomIndex2 = Math.floor(Math.random() * songsArrayFromArtist.length);
 
   const randomIdFromArtist = songsArrayFromArtist[randomIndex]._id;
   const randomId2FromArtist = songsArrayFromArtist[randomIndex2]._id;

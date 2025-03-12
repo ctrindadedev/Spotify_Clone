@@ -2,24 +2,32 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlay } from "@fortawesome/free-solid-svg-icons";
 import { Link, useParams } from "react-router-dom";
+import { useFetchData } from "../../api/api";
 import SongList from "../components/SongList";
-import { artistArray } from "../assets/database/artists";
-import { songsArray } from "../assets/database/songs";
 
 const Artist = () => {
   const { id } = useParams();
+  const { artistArray, songsArray } = useFetchData(); // obter os dados usando o hook
 
-  const { name, banner } = artistArray.filter(
-    (currentArtistObj) => currentArtistObj._id === id
-  )[0];
+  // verificaçaõ para garantir que os dados estejam carregados
+  if (!artistArray.length || !songsArray.length) {
+    return <div>Carregando...</div>; // exibir algo  enquanto carrega
+  }
 
+  const artist = artistArray.find((artist) => artist._id === id);
+  if (!artist) {
+    return <div>Artista não encontrado.</div>; // caso não encontre o artista com o id
+  }
+
+  const { name, banner } = artist;
+
+  // filtrar músicas do artista
   const songsArrayFromArtist = songsArray.filter(
-    (currentSongObj) => currentSongObj.artist === name
+    (song) => song.artist === name
   );
 
-  const randomIndex = Math.floor(
-    Math.random() * (songsArrayFromArtist.length - 1)
-  );
+  // select aleatoriamente uma música do artista
+  const randomIndex = Math.floor(Math.random() * songsArrayFromArtist.length);
   const randomIdFromArtist = songsArrayFromArtist[randomIndex]._id;
 
   return (
