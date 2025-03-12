@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "axios"; //realizar as requisições do front-end ao back-end
 import { useEffect, useState } from "react";
 
 const API_URL = "https://spotify-clone-aqj4.onrender.com";

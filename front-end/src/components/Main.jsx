@@ -1,6 +1,6 @@
 import React from "react";
 import ItemList from "./ItemList";
-import { useFetchData } from "../../api/api";
+import { useFetchData } from "../../api/api"; //useFetchData() evita dependência de arquivos estáticos
 
 const Main = ({ type }) => {
   const { artistArray, songsArray } = useFetchData();

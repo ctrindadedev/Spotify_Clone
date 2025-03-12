@@ -94,7 +94,7 @@ const newArtistArray = artistArray.map((currentArtistObj) => {
 // Quando componentes se re-renderizão?
 // Uma das ocasiões é quando uma variável de estado usada por esse componente é atualizada
 //"Hookado" por assim dizer, é quando um componente é re-redenrizado
-// //Exemplo: Hook - useState, useEffect - useeff (snipet)
+// //Exemplo: Hook - useState, useEffect - useeff (snipet), Hook - useFetchData() evita dependência de arquivos estáticos
 
 useEffect(() => {
   const intervalId = setInterval(() => {
