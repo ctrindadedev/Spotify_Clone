@@ -8,7 +8,7 @@ import "dotenv/config";
 import cors from "cors";
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 app.use(cors()); //O middleware atual no meio entre a requisição e a respsota do servidor, no caso do projeto foi usado para receber respostas
 // entre portas diferentes
